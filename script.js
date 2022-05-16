@@ -4,11 +4,11 @@ let draggableTodo = null;
 
 
 const localStorageTransactions = JSON.parse(
-  localStorage.getItem('todo')
+  localStorage.getItem('todos')
 );
 
-let todo =
-  localStorage.getItem('todo') !== null ? localStorageTransactions : [];
+let todos =
+  localStorage.getItem('todos') !== null ? localStorageTransactions : [];
 
 todos.forEach((todo) => {
   todo.addEventListener("dragstart", dragStart);
