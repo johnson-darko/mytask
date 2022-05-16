@@ -3,12 +3,10 @@ const all_status = document.querySelectorAll(".status");
 let draggableTodo = null;
 
 
-const localStorageTodos = JSON.parse(
-  localStorage.getItem('todos')
-);
+const todos = localStorage.getItem('todos')
+  ? JSON.parse(localStorage.getItem('todos'))
+  : [];
 
-let todos =
-  localStorage.getItem('todos') !== null ? localStorageTodos : [];
 
 todos.forEach((todo) => {
   todo.addEventListener("dragstart", dragStart);
@@ -21,6 +19,7 @@ function dragStart() {
     this.style.display = "none";
   }, 0);
   console.log("dragStart");
+ 
 }
 
 function dragEnd() {
@@ -29,6 +28,8 @@ function dragEnd() {
     this.style.display = "block";
   }, 0);
   console.log("dragEnd");
+  localStorage.setItem('todos', JSON.stringify(todos));
+  
 }
 
 all_status.forEach((status) => {
@@ -36,6 +37,7 @@ all_status.forEach((status) => {
   status.addEventListener("dragenter", dragEnter);
   status.addEventListener("dragleave", dragLeave);
   status.addEventListener("drop", dragDrop);
+  localStorage.setItem('todos', JSON.stringify(todos));
 });
 
 function dragOver(e) {
@@ -100,6 +102,7 @@ function createTodo() {
   todo_div.appendChild(txt);
   todo_div.classList.add("todo");
   todo_div.setAttribute("draggable", "true");
+  localStorage.setItem('todos', JSON.stringify(todos));
 
   /* create span */
   const span = document.createElement("span");
@@ -113,6 +116,7 @@ function createTodo() {
 
   span.addEventListener("click", () => {
     span.parentElement.style.display = "none";
+    localStorage.setItem('todos', JSON.stringify(todos));
   });
   //   console.log(todo_div);
 
@@ -122,6 +126,7 @@ function createTodo() {
   document.getElementById("todo_input").value = "";
   todo_form.classList.remove("active");
   overlay.classList.remove("active");
+  localStorage.setItem('todos', JSON.stringify(todos));
 }
 
 const close_btns = document.querySelectorAll(".close");
@@ -129,5 +134,6 @@ const close_btns = document.querySelectorAll(".close");
 close_btns.forEach((btn) => {
   btn.addEventListener("click", () => {
     btn.parentElement.style.display = "none";
+    localStorage.setItem('todos', JSON.stringify(todos));
   });
 });
