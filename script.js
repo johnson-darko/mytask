@@ -2,6 +2,14 @@ const todos = document.querySelectorAll(".todo");
 const all_status = document.querySelectorAll(".status");
 let draggableTodo = null;
 
+
+const localStorageTransactions = JSON.parse(
+  localStorage.getItem('todo')
+);
+
+let todo =
+  localStorage.getItem('todo') !== null ? localStorageTransactions : [];
+
 todos.forEach((todo) => {
   todo.addEventListener("dragstart", dragStart);
   todo.addEventListener("dragend", dragEnd);
