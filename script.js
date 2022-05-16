@@ -3,12 +3,12 @@ const all_status = document.querySelectorAll(".status");
 let draggableTodo = null;
 
 
-const localStorageTransactions = JSON.parse(
+const localStorageTodos = JSON.parse(
   localStorage.getItem('todos')
 );
 
 let todos =
-  localStorage.getItem('todos') !== null ? localStorageTransactions : [];
+  localStorage.getItem('todos') !== null ? localStorageTodos : [];
 
 todos.forEach((todo) => {
   todo.addEventListener("dragstart", dragStart);
