@@ -1,43 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Draggable Todo App</title>
-  </head>
-  <body>
-    <!-- modal -->
-    <div class="modal" id="todo_form">
-      <div class="header">
-        <div class="title">Add Todo</div>
-        <button class="btn close-modal">&times;</button>
-      </div>
-      <div class="body">
-        <input type="text" id="todo_input" />
-        <input type="submit" value="Add Todo" id="todo_submit" />
-      </div>
-    </div>
-    <!-- todo -->
-    <div class="todo-container">
-      <div class="status" id="no_status">
-        <h1>No Status</h1>
-        <button id="add_btn" data-target-modal="#todo_form">+ Add Todo</button>
-        
-      </div>
-      <div class="status">
-        <h1>Not Started</h1>
-      </div>
-      <div class="status">
-        <h1>In Progress</h1>
-      </div>
-      <div class="status">
-        <h1>Completed</h1>
-      </div>
-    </div>
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Todo List 2022 with LocalStorage</title>
+	<!-- CSS Import -->
+	<link rel="stylesheet" href="main.css" />
+	<!-- End of CSS Import -->
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,700;0,900;1,400&family=Montserrat:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+	<!-- End of Fonts -->
+</head>
+<body>
+	<!-- App Wrapper -->
+	<main class="app">
+		<!-- Greeting -->
+		<section class="greeting">
+			<h2 class="title">
+				What's up, <input type="text" id="name" placeholder="Name here" />
+			</h2>
+		</section>
+		<!-- End of Greeting -->
+		
+		<!-- New Todo -->
+		<section class="create-todo">
+			<h3>CREATE A TODO</h3>
+			<form id="new-todo-form">
+				<h4>What's on your todo?</h4>
+				<input 
+					type="text" 
+					placeholder="e.g. Get some milk"
+					name="content"
+					id="content" />
+				
+				<h4>Pick a category</h4>
+				<div class="options">
+					<label>
+						<input type="radio" name="category" id="category1" value="business" /> 
+						<span class="bubble business"></span>
+						<div>Business</div>
+					</label>
+					<label>
+						<input type="radio" name="category" id="category2" value="personal" />
+						<span class="bubble personal"></span>
+						<div>Personal</div>
+					</label>
+				</div>
 
-    <div id="overlay"></div>
+				<input type="submit" value="Add todo" />
+			</form>
+		</section>
+		<!-- End of New Todo -->
 
-    <script src="script.js"></script>
-  </body>
+		<!-- Todo List -->
+		<section class="todo-list">
+			<h3>TODO LIST</h3>
+			<div class="list" id="todo-list"></div>
+		</section>
+		<!-- End of Todo List -->
+
+	</main>
+	<!-- End of App Wrapper -->
+
+	<!-- JS Import -->
+	<script src="main.js"></script>
+	<!-- End of JS Import -->
+</body>
 </html>
